@@ -1,6 +1,6 @@
 package com.example.nt_clock_app
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.material3.Button
@@ -51,11 +51,23 @@ fun ButtonSM_1() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 400, heightDp = 800)
+@Preview(showBackground = true, name = "Smartphone Size", widthDp = 400, heightDp = 800)
 @Composable
-fun Preview_SM() {
+fun Preview_Mobile_SM() {
     NT_Clock_AppTheme {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            TitleText_SM()
+            TextSM_1()
+            ButtonSM_1()
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "Tablet Size", widthDp = 1200, heightDp = 800)
+@Composable
+fun Preview_Tablet_SM() {
+    NT_Clock_AppTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
             TitleText_SM()
             TextSM_1()
             ButtonSM_1()

@@ -1,7 +1,6 @@
 package com.example.nt_clock_app
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
@@ -21,7 +20,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Button
 
 @Composable
-fun TitleText2() {
+fun TitleText_AM() {
     Text(
         modifier = Modifier.offset(x = 40.dp, y = 60.dp),
         text = "Alarm",
@@ -32,7 +31,7 @@ fun TitleText2() {
 }
 
 @Composable
-fun FilledCardExample() {
+fun Card_AM() {
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
         modifier = Modifier
@@ -90,13 +89,24 @@ fun FilledCardExample() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 400, heightDp = 800)
+@Preview(showBackground = true, name = "Smartphone Size", widthDp = 400, heightDp = 800)
 @Composable
-fun GreetingPreview2() {
+fun Preview_Mobile_AM() {
     NT_Clock_AppTheme {
         Box(modifier = Modifier.fillMaxSize()) {
-            TitleText2()
-            FilledCardExample()
+            TitleText_AM()
+            Card_AM()
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "Tablet Size", widthDp = 1200, heightDp = 800)
+@Composable
+fun Preview_Tablet_AM() {
+    NT_Clock_AppTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            TitleText_AM()
+            Card_AM()
         }
     }
 }

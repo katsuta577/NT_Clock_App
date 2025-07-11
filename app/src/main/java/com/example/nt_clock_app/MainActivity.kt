@@ -35,7 +35,7 @@ fun TitleText_MA() {
 }
 
 @Composable
-fun TimeText(fontSize: androidx.compose.ui.unit.TextUnit) {
+fun TimeText_MA(fontSize: androidx.compose.ui.unit.TextUnit) {
     Text(
         text = "13:57:11",
         fontSize = fontSize,
@@ -46,7 +46,7 @@ fun TimeText(fontSize: androidx.compose.ui.unit.TextUnit) {
 }
 
 @Composable
-fun DateText(fontSize: androidx.compose.ui.unit.TextUnit) {
+fun DateText_MA(fontSize: androidx.compose.ui.unit.TextUnit) {
     Text(
         text = "Monday, July 7, 2025",
         fontSize = fontSize,
@@ -59,24 +59,20 @@ fun DateText(fontSize: androidx.compose.ui.unit.TextUnit) {
 @Composable
 fun ResponsiveClockTextGroup() {
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        val density = LocalDensity.current
-        val isTablet = maxWidth > 600.dp
-        val isLandscape = maxWidth > maxHeight
-
-        val timeScale = if (isTablet) {
-            if (isLandscape) 0.1f else 0.12f
+        val timeScale = if (maxWidth > 600.dp) {
+            if (maxWidth > maxHeight) 0.1f else 0.12f
         } else {
-            if (isLandscape) 0.15f else 0.2f
-        }
-        val dateScale = if (isTablet) {
-            if (isLandscape) 0.04f else 0.05f
-        } else {
-            if (isLandscape) 0.06f else 0.08f
+            if (maxWidth > maxHeight) 0.15f else 0.2f
         }
 
-        val baseSize = minOf(maxWidth, maxHeight)
-        val timeFontSize = with(density) { (baseSize * timeScale).toSp() }
-        val dateFontSize = with(density) { (baseSize * dateScale).toSp() }
+        val dateScale = if (maxWidth > 600.dp) {
+            if (maxWidth > maxHeight) 0.04f else 0.05f
+        } else {
+            if (maxWidth > maxHeight) 0.06f else 0.08f
+        }
+
+        val timeTextResponsiveFontSize = with(LocalDensity.current) {(minOf(maxWidth, maxHeight) * timeScale).toSp()}
+        val dateTextResponsiveFontSize = with(LocalDensity.current) {(minOf(maxWidth, maxHeight) * dateScale).toSp()}
         val spacerTop = maxHeight * 0.2f
         val spacerBetween = maxHeight * 0.01f
 
@@ -86,16 +82,16 @@ fun ResponsiveClockTextGroup() {
             verticalArrangement = Arrangement.Top
         ) {
             Spacer(modifier = Modifier.height(spacerTop))
-            TimeText(fontSize = timeFontSize)
+            TimeText_MA(fontSize = timeTextResponsiveFontSize)
             Spacer(modifier = Modifier.height(spacerBetween))
-            DateText(fontSize = dateFontSize)
+            DateText_MA(fontSize = dateTextResponsiveFontSize)
         }
     }
 }
 
 @Preview(showBackground = true, name = "Smartphone Size", widthDp = 400, heightDp = 800)
 @Composable
-fun Preview_Mobile() {
+fun Preview_Mobile_MA() {
     NT_Clock_AppTheme {
         Box(modifier = Modifier.fillMaxSize()) {
             TitleText_MA()
@@ -106,7 +102,7 @@ fun Preview_Mobile() {
 
 @Preview(showBackground = true, name = "Tablet Size", widthDp = 1200, heightDp = 800)
 @Composable
-fun Preview_Tablet() {
+fun Preview_Tablet_MA() {
     NT_Clock_AppTheme {
         Box(modifier = Modifier.fillMaxSize()) {
             TitleText_MA()
