@@ -1,6 +1,7 @@
 package com.example.nt_clock_app
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
@@ -18,6 +19,8 @@ import androidx.compose.ui.unit.sp
 import com.example.nt_clock_app.ui.theme.NT_Clock_AppTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Button
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.Alignment
 
 @Composable
 fun TitleText_AM() {
@@ -32,60 +35,63 @@ fun TitleText_AM() {
 
 @Composable
 fun Card_AM() {
-    Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-        modifier = Modifier
-            .size(width = 360.dp, height = 200.dp)
-            .offset(x = 20.dp, y = 150.dp)
-            .fillMaxSize()
-    )
+    BoxWithConstraints(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        val cardWidth: Dp = maxWidth * 0.9f
 
-    {
-        Text(
-            modifier = Modifier.offset(x = 30.dp, y = 30.dp),
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Card(
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                modifier = Modifier.size(width = cardWidth, height = 200.dp).align(Alignment.TopCenter).offset(y = 150.dp)
+            ) {
+                Text(
+                    modifier = Modifier.offset(x = 30.dp, y = 30.dp),
+                    text = "Weekend",
+                    fontSize = 20.sp,
+                    fontFamily = Nimbus_Sans,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
 
-            text = "Weekend",
-            fontSize = 20.sp,
-            fontFamily = Nimbus_Sans,
-            fontWeight = FontWeight.Normal,
-            fontStyle = FontStyle.Normal
-        )
+                Text(
+                    modifier = Modifier.offset(x = 30.dp, y = 40.dp),
+                    text = "7:30",
+                    fontSize = 60.sp,
+                    fontFamily = Nimbus_Sans,
+                    fontWeight = FontWeight.Bold,
+                    fontStyle = FontStyle.Normal
+                )
 
-        Text(
-            modifier = Modifier.offset(x = 30.dp, y = 40.dp),
+                Switch(
+                    modifier = Modifier.offset(x = 270.dp, y = (-20).dp),
+                    checked = true,
+                    onCheckedChange = {}
+                )
 
-            text = "7:30",
-            fontSize = 60.sp,
-            fontFamily = Nimbus_Sans,
-            fontWeight = FontWeight.Bold,
-            fontStyle = FontStyle.Normal
-        )
+                Button(onClick = {}, modifier = Modifier.offset(x = 30.dp, y = (-5).dp)) {
+                    Text(
+                        text = "Edit",
+                        fontSize = 20.sp,
+                        fontFamily = Nimbus_Sans,
+                        fontWeight = FontWeight.Bold,
+                        fontStyle = FontStyle.Normal
+                    )
+                }
 
-        Switch(
-            modifier = Modifier.offset(x = 270.dp, y = (-20).dp),
-            checked = true,
-            onCheckedChange = {}
-        )
-
-        Button(onClick = {}, modifier = Modifier.offset(x = 30.dp, y = (-5).dp)) {
-            Text(
-                text = "Edit",
-                fontSize = 20.sp,
-                fontFamily = Nimbus_Sans,
-                fontWeight = FontWeight.Bold,
-                fontStyle = FontStyle.Normal
-            )
+                Text(
+                    modifier = Modifier.offset(x = 130.dp, y = (-38).dp),
+                    text = "Operates on Weekdays",
+                    fontSize = 18.sp,
+                    fontFamily = Nimbus_Sans,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
+            }
         }
-
-        Text(
-            modifier = Modifier.offset(x = 130.dp, y = (-38).dp),
-
-            text = "Operates on Weekdays",
-            fontSize = 18.sp,
-            fontFamily = Nimbus_Sans,
-            fontWeight = FontWeight.Normal,
-            fontStyle = FontStyle.Normal
-        )
     }
 }
 
