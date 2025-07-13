@@ -35,44 +35,45 @@ fun TitleText_AM() {
 
 @Composable
 fun Card_AM() {
-    BoxWithConstraints(
-        modifier = Modifier.fillMaxSize()
-    ) {
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val cardWidth: Dp = maxWidth * 0.9f
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
+        Card(
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+            modifier = Modifier.size(width = cardWidth, height = 200.dp).align(Alignment.TopCenter).offset(y = 150.dp)
         ) {
-            Card(
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                modifier = Modifier.size(width = cardWidth, height = 200.dp).align(Alignment.TopCenter).offset(y = 150.dp)
-            ) {
+            BoxWithConstraints {
                 Text(
-                    modifier = Modifier.offset(x = 30.dp, y = 30.dp),
+                    modifier = Modifier.offset(x = maxWidth * 0.08f, y = 25.dp),
                     text = "Weekend",
                     fontSize = 20.sp,
                     fontFamily = Nimbus_Sans,
                     fontWeight = FontWeight.Normal,
                     fontStyle = FontStyle.Normal
                 )
+            }
 
+            BoxWithConstraints {
                 Text(
-                    modifier = Modifier.offset(x = 30.dp, y = 40.dp),
+                    modifier = Modifier.offset(x = maxWidth * 0.08f, y = 40.dp),
                     text = "7:30",
                     fontSize = 60.sp,
                     fontFamily = Nimbus_Sans,
                     fontWeight = FontWeight.Bold,
                     fontStyle = FontStyle.Normal
                 )
+            }
 
+            BoxWithConstraints {
                 Switch(
-                    modifier = Modifier.offset(x = 270.dp, y = (-20).dp),
+                    modifier = Modifier.offset(x = maxWidth * 0.75f, y = (-20).dp),
                     checked = true,
                     onCheckedChange = {}
                 )
+            }
 
-                Button(onClick = {}, modifier = Modifier.offset(x = 30.dp, y = (-5).dp)) {
+            BoxWithConstraints {
+                Button(onClick = {}, modifier = Modifier.offset(x = maxWidth * 0.08f, y = (-5).dp)) {
                     Text(
                         text = "Edit",
                         fontSize = 20.sp,
@@ -81,9 +82,11 @@ fun Card_AM() {
                         fontStyle = FontStyle.Normal
                     )
                 }
+            }
 
+            BoxWithConstraints {
                 Text(
-                    modifier = Modifier.offset(x = 130.dp, y = (-38).dp),
+                    modifier = Modifier.offset(x = maxWidth * 0.35f, y = (-38).dp),
                     text = "Operates on Weekdays",
                     fontSize = 18.sp,
                     fontFamily = Nimbus_Sans,
