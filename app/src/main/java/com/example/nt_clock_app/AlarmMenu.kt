@@ -36,7 +36,7 @@ fun TitleText_AM() {
 @Composable
 fun Card_AM() {
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        val cardWidth: Dp = maxWidth * 0.9f
+        val cardWidth: Dp = maxWidth * if (maxWidth.value / maxHeight.value > 1f) 0.5f else 0.9f
 
         Card(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
@@ -46,7 +46,7 @@ fun Card_AM() {
                 Text(
                     modifier = Modifier.offset(x = maxWidth * 0.08f, y = 25.dp),
                     text = "Weekend",
-                    fontSize = 20.sp,
+                    fontSize = (maxWidth.value * 0.06f).sp,
                     fontFamily = Nimbus_Sans,
                     fontWeight = FontWeight.Normal,
                     fontStyle = FontStyle.Normal
